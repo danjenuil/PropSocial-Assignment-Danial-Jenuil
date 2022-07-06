@@ -1,0 +1,8 @@
+# Replace the token below by using rails secret command to generate a new token
+SECRET_TOKEN=28e2d2033439a045d7da3c946474bf31
+
+WORKER_PROCESSES=1
+LISTEN_ON=0.0.0.0:8010
+DATABASE_URL=postgresql://propsocial-lite:test_db_password@postgres:5432/propsocial-lite?encoding=utf8&pool=5&timeout=5000
+CACHE_URL=redis://redis:6379/0
+JOB_WORKER_URL=redis://redis:6379/0

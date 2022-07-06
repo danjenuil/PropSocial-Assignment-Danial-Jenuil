@@ -1,0 +1,6 @@
+.git
+.dockerignore
+.env
+propsocial-lite/node_modules/
+propsocial-lite/vendor/bundle/
+propsocial-lite/tmp/
