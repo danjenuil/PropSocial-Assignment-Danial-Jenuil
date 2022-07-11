@@ -1,6 +1,8 @@
-= simple_form_for [:admin, @property] do |f|
+= simple_form_for [:admin, @property], wrapper_mappings: { check_boxes: :vertical_collection, radio_buttons: :vertical_collection, file: :custom_file, boolean: :custom_boolean_switch }  do |f|
+  = f.error_notification
   = f.input :name
   = f.input :price
   = f.input :description
   = f.input :size
-  = f.button :submit
+  = f.input :images, as: :file, input_html: { multiple: true, accept: Property::ACCEPT_FILE_TYPES }
+  = f.button :submit, class: 'btn-primary'

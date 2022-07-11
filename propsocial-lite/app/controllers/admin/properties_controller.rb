@@ -36,6 +36,6 @@ class Admin::PropertiesController < AdminController
   private
 
   def property_params
-    params.require(:property).permit(:name, :price, :description, :size)
+    params.require(:property).permit(:name, :price, :description, :size, images: [])
   end
 end
