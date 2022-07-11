@@ -1,9 +1,9 @@
-h5 List of Properties (#{pluralize(@properties.length, 'property')})
+section.d-flex.align-items-center.justify-content-between
+  h5 List of Properties (#{pluralize(@properties.length, 'property')})
+  = link_to 'Add a new property', new_admin_property_path, class: 'btn btn-primary btn-sm' 
 
 - if @properties.length == 0
-  section.d-flex.
   p No properties to show
-  = link_to 'Add a new property', new_admin_property_path, class: 'btn btn-primary btn-large' 
 - else
   table.table
     thead
