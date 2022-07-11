@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    title
+      | PropsocialLite
+    meta[name="viewport" content="width=device-width,initial-scale=1"]
+    = csrf_meta_tags
+    = csp_meta_tag
+    = javascript_importmap_tags
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+  body
+    main.container
+      = render "shared/flash"
+      h1
+        | Admin
+      = yield

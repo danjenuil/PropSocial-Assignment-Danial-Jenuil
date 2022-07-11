@@ -12,7 +12,9 @@ module PropsocialLite
 
     config.log_level = :debug
     config.log_tags  = [:subdomain, :uuid]
-    config.logger    = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
+    logger = ActiveSupport::Logger.new(STDOUT)
+    logger.formatter = config.log_formatter
+    config.logger    = ActiveSupport::TaggedLogging.new(logger)
 
     config.cache_store = :redis_store, ENV['CACHE_URL'],
                          { namespace: 'propsocial-lite::cache' }

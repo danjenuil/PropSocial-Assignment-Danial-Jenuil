@@ -1,0 +1,18 @@
+h5 List of Properties (#{pluralize(@properties.length, 'property')})
+
+- if @properties.length == 0
+  section.d-flex.
+  p No properties to show
+  = link_to 'Add a new property', new_admin_property_path, class: 'btn btn-primary btn-large' 
+- else
+  table.table
+    thead
+      tr
+        th scope='col' #
+        th scope='col' Name
+        th scope='col' Price (MYR)
+        th scope='col' description
+        th scope='col' Size (sq ft)
+        th scope='col' Actions
+    tbody 
+      = render @properties
