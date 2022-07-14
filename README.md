@@ -12,7 +12,7 @@ Prerequisite: Ensure that you have Docker installed in your system and have Dock
 7. Using your web browser, visit [http://localhost:8020](http://localhost:8020) to view the web app.
 
 ## Logging into the sample admin account
-1. With your web browser, visit [http://localhost:8020/admin/sign_in](http://localhost:8020/admin/sign_in).
+1. With your web browser, visit [http://localhost:8020/admins/sign_in](http://localhost:8020/admins/sign_in).
 2. Enter the following credentials:
 ```
 Email: admin@example.com
