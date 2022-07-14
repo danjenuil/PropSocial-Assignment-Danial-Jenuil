@@ -15,7 +15,6 @@ WORKDIR $INSTALL_PATH
 COPY propsocial-lite/ .
 RUN rm -rf node_modules vendor
 RUN gem install rails bundler
-RUN bundle install
 RUN yarn install
 
 # Start server

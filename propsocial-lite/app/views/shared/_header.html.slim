@@ -1,0 +1,12 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light.fixed-top
+  .container
+    = link_to 'PropSocial Lite', root_path, class: 'navbar-brand'
+    button.navbar-toggler[type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"]
+      span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      section.d-flex.ms-auto.mt-3.mt-md-0
+        - if admin_signed_in?
+          = link_to 'Go to Admin Site', admin_root_path, class: 'btn btn-dark w-md-auto'
+          = button_to 'Admin Sign Out', destroy_admin_session_path, method: :delete, class: 'btn btn-danger w-md-auto ms-md-2', data: { turbo: false }
+        - else
+          = link_to 'Admin Sign In', new_admin_session_path, class: 'btn btn-dark'

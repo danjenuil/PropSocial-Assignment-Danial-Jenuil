@@ -1,18 +1,19 @@
-section.d-flex.align-items-center.justify-content-between
+section.d-flex.align-items-center.justify-content-between.py-3.px-2
   h5 List of Properties (#{pluralize(@properties.length, 'property')})
   = link_to 'Add a new property', new_admin_property_path, class: 'btn btn-primary btn-sm' 
 
 - if @properties.length == 0
   p No properties to show
 - else
-  table.table
-    thead
-      tr
-        th scope='col' #
-        th scope='col' Name
-        th scope='col' Price (MYR)
-        th scope='col' description
-        th scope='col' Size (sq ft)
-        th scope='col' Actions
-    tbody 
-      = render @properties
+  section data-controller='data-table'
+    table.table data-data-table-target='table'
+      thead
+        tr
+          th scope='col' ID
+          th scope='col' Name
+          th scope='col' Price (MYR)
+          th scope='col' Description
+          th scope='col' Size (sq ft)
+          th scope='col' Action
+      tbody 
+        = render @properties

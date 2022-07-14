@@ -2,13 +2,13 @@ tr
   th scope='row'
     = property_counter + 1
   td
-    = property.name
+    = link_to property.name, property_path(property), target: '_blank'
   td 
-    = property.price
+    = number_with_delimiter(property.price.to_i)
   td
     = property.description
   td
     = property.size
   td
-    = link_to 'Edit', edit_admin_property_path(property), class: 'btn btn-secondary btn-sm me-2'
-    = link_to 'Delete', admin_property_path(property), class: 'btn btn-danger btn-sm', data: { turbo_method: 'delete', turbo_confirm: 'Are you sure you want to delete this property?' }
+    .d-flex.justify-content-between.align-items-stretch.flex-md-row.flex-column
+      = link_to 'Delete', admin_property_path(property), class: 'btn btn-danger btn-sm', data: { turbo_method: 'delete', turbo_confirm: 'Are you sure you want to delete this property?' }

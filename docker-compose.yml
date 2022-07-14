@@ -24,6 +24,7 @@ services:
       context: .
     volumes:
       - ./propsocial-lite:/opt/app
+      - bundle_path:/bundle
     links:
       - postgres
       - redis
@@ -35,6 +36,8 @@ services:
   sidekiq:
     build:
       context: .
+    volumes:
+      - bundle_path:/bundle
     command: bundle exec sidekiq 
     links:
       - postgres
@@ -52,5 +55,6 @@ services:
       - '8020:8020'
 
 volumes:
+  bundle_path:
   propsocial-lite-postgres:
   propsocial-lite-redis:

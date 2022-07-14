@@ -1,0 +1,17 @@
+section.col
+  section.card.h-100
+    - if !property.images.attached?
+      = image_tag 'no-image-for-property.png'
+    - else
+      = image_tag property.images.first
+    section.card-body
+      = link_to property.name, property_path(property), class: 'text-uppercase fs-5'
+      p.card-text 
+        span
+          span 
+            | Price: 
+          span.text-success.fw-bold
+            = "RM#{number_with_delimiter(property.price.to_i)}"
+        span.d-inline-block.mt-2 style='text-overflow: ellipsis;'
+          = property.description
+

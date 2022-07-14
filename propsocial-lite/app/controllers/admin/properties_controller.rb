@@ -1,23 +1,15 @@
 class Admin::PropertiesController < AdminController
   def index
-    @properties = Property.all
+    @properties = Property.order(created_at: :desc).all
   end
 
   def new
     @property = Property.new
   end
 
-  def show
-
-  end
-
-  def edit
-
-  end
-
   def create
     @property = Property.new(property_params)
-
+    
     if @property.save
       redirect_to admin_root_url, notice: 'Property is successfully created!'
     else
@@ -25,12 +17,11 @@ class Admin::PropertiesController < AdminController
     end
   end
 
-  def update
-
-  end
-
   def destroy
-
+    @property = Property.find(params[:id])
+    @property.destroy
+    flash[:notice] = 'Property has been deleted successfully!'
+    redirect_to admin_root_path
   end
 
   private

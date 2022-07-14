@@ -1,8 +1,15 @@
-= simple_form_for [:admin, @property], wrapper_mappings: { check_boxes: :vertical_collection, radio_buttons: :vertical_collection, file: :custom_file, boolean: :custom_boolean_switch }  do |f|
+h4 Add a new property
+= simple_form_for [:admin, @property] do |f|
   = f.error_notification
-  = f.input :name
-  = f.input :price
-  = f.input :description
-  = f.input :size
-  = f.input :images, as: :file, input_html: { multiple: true, accept: Property::ACCEPT_FILE_TYPES }
-  = f.button :submit, class: 'btn-primary'
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+  .mb-2
+    = f.input :name
+  .mb-2
+    = f.input :price, label: 'Price (RM)'
+  .mb-2
+    = f.input :description
+  .mb-2
+    = f.input :size, label: 'Size (square feet)'
+  .mb-2
+    = f.input :images, input_html: { multiple: true, accept: Property::ACCEPT_FILE_TYPES, class: 'form-control' }
+  = f.button :submit, class: 'btn btn-primary'

@@ -1,0 +1,20 @@
+h4.text-center.text-md-start.mt-4 List of properties
+
+= search_form_for @q, url: root_path, class: 'my-4' do |f|
+  = f.label :name_cont, 'Search for property', class: 'form-label'
+  .row
+    .col.mb-2.mb-lg-0
+      = f.search_field :name_cont, placeholder: 'Enter a name to search for', class: 'form-control w-100'
+    .col-lg-2.mb-2.mb-lg-0
+      = f.submit 'Search', class: 'btn btn-primary w-100'
+    .col-lg-3
+      - if @q.result.length > 0
+        = sort_link @q, :price_cents, 'Sort by Price', class: 'btn btn-info w-100'
+      - else
+        a.btn.btn-info.disabled.w-100 Sort by Price 
+
+section.row.row-cols-1.row-cols-sm-2.row-cols-lg-4.gy-3
+  = render partial: 'property', collection: @properties
+
+.d-flex.justify-content-center.py-3
+  = paginate @properties, theme: 'bootstrap-5'

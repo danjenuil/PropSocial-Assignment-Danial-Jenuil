@@ -2,13 +2,15 @@ doctype html
 html
   head
     title
-      | PropSocial Lite
+      | PropSocial Lite | Main Site
     meta[name="viewport" content="width=device-width,initial-scale=1"]
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
   body
-    main.container
-      = render 'header'
+    - unless devise_controller?
+      = render partial: 'shared/header'
+    main.container style='padding-top: 56px;' data-controller='swiper'
+      = render partial: 'shared/flash'
       = yield

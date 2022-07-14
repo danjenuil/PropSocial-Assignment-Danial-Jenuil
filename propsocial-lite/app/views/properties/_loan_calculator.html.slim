@@ -1,0 +1,24 @@
+h3 Loan Calculator 
+
+section data-controller='loan-calculator'
+  = form_with url: '#', data: { action: 'loan-calculator#handleForm' } do |f|
+      .mb-3
+        = f.label :property_price, 'Property Price (RM)', class: 'form-label'
+        = f.number_field :property_price, value: property.price.to_i, min: 1, class: 'form-control', data: { loan_calculator_target: 'propertyPrice' }
+      .mb-3
+        = f.label :margin_of_finance, 'Margin of Finance (%)', class: 'form-label'
+        = f.number_field :margin_of_finance, min: 0, max: 100, class: 'form-control', value: 90, data: { loan_calculator_target: 'marginOfFinance' }
+      .mb-3
+        = f.label :tenure, 'Loan Tenure (Years)', class: 'form-label'
+        = f.number_field :tenure, min: 1, class: 'form-control', value: 30, data: { loan_calculator_target: 'tenure' }
+      .mb-3
+        = f.label :interest_rate, 'Interest Rate (%)', class: 'form-label'
+        = f.number_field :interest_rate, min: 0, class: 'form-control', value: 3.60, data: { loan_calculator_target: 'interestRate' }, step: 'any'
+      .mb-3
+        = f.label :downpayment, 'Downpayment (RM)', class: 'form-label'
+        = f.number_field :downpayment, min: 1, class: 'form-control', value: (property.price * 0.10).to_i, data: { loan_calculator_target: 'downpayment' }, readonly: true
+      .mb-3
+        = f.label :monthly_repayment, 'Estimated Monthly Repayment (RM)', class: 'form-label'
+        = f.number_field :monthly_repayment, min: 0, class: 'form-control', readonly: true, data: { loan_calculator_target: 'monthlyRepayment' }
+      = f.submit 'Calculate', class: 'btn btn-primary'
+
